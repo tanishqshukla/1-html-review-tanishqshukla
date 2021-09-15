@@ -25,8 +25,9 @@
 </nav>
 <main>
   <center><h2>Books</h2></center>
-    <table class= "table table-bordered table-striped table-hover">
-        <tr><th>Book Title</th> <th>Author</th><th>Publication Year</th><th>Publisher</th><th>Page Count</th><th>MSRP</th></tr>
+    <table id="bookTable" class= "table table-bordered table-striped table-hover">
+        <thead><tr><th>Book Title</th> <th>Author</th><th>Publication Year</th><th>Publisher</th><th>Page Count</th><th>MSRP</th></tr></thead>
+        <tbody>
         <tr><td>Harry Potter</td><td>J.K Rowling</td> <td>1997</td><td>Penguin Random House Audio Publishing Group</td><td>309 Pages</td><td>$13.49</td></tr>
 
                 <tr><td>Aline and the Blue Bottle</td><td>Carolina Ugaz-Morán</td> <td>October 24, 2019</td><td>CUM Publication</td><td>274 Pages</td><td>$12.29</td></tr>
@@ -35,7 +36,7 @@
 
                                 <tr><td>The Promise</td><td>Damon Galgut</td> <td>April 6, 2021</td><td>Viking</td><td>256 Pages</td><td>$18.99</td></tr>
 
-                                        <tr><td>China Room</td><td>Sunjeev Sahota</td> <td> July 13, 2021</td><td>Penguin Random House Audio Publishing Group</td><td>256 Pages</td><td>$23.11</td></tr>
+               </tbody>                         <tr><td>China Room</td><td>Sunjeev Sahota</td> <td> July 13, 2021</td><td>Penguin Random House Audio Publishing Group</td><td>256 Pages</td><td>$23.11</td></tr>
     </table> <br><br>
 
     <h3>Add a new book</h3>
@@ -71,5 +72,9 @@
 </main>
 <hr>
 <footer> Gordon Peck | 7340 Wycliff Ave | 7340 Wycliff Ave</footer>
+<script src='js/tablesort.min.js'></script>
+<script>
+  new Tablesort(document.getElementById('bookTable'));
+</script>
   </body>
 </html>
