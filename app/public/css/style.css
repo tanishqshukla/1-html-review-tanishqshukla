@@ -90,9 +90,9 @@ th[role=columnheader]:not(.no-sort):after {
 	margin-top: 7px;
 	border-width: 0 4px 4px;
 	border-style: solid;
-	border-color: #404040 transparent;
-	visibility: hidden;
-	opacity: 0;
+	border-color: #898989 transparent;
+	visibility: visible;
+	opacity: 100;
 	-ms-user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
