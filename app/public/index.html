@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
@@ -25,11 +26,13 @@
 
 <br>
 
-<nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
 <a href="index.html">About Me</a> |
 <a href="books.html">Books</a> |
 <a href="adventures.html">Adventures</a>
 
+ </div>
 </nav>
 
 <main>
@@ -54,12 +57,17 @@ Country:<strong>{{ person.location.country }}</strong><br>
       </div>
     </div>
   </div>
-
-          <a v-bind:href="person.picture.thumbnail">  <img v-bind:src="person.picture.large" class="mx-auto d-block"></a><figcaption>Random User Generator <cite><a href="https://yt3.ggpht.com/ytc/AKedOLRyjJBpITMHrOd5uBG3H8GbiDmP6InaEGy_0w-0cw=s900-c-k-c0x00ffffff-no-rj">Random Image</a></cite></figcaption>
+  <div id="refresh" class= "text-center">
+          <a v-bind:href="person.picture.thumbnail">  <img v-bind:src="person.picture.large" class="mx-auto d-block"></a><figcaption>Source: <cite><a v-bind:href="person.picture.thumbnail">Click Here!</a></cite></figcaption>
+          <form v-on:submit.prevent="fetchUserData">
+                  <button id="refresh" class="btn btn-dark" type="submit">Refresh</button>
+          </form>
+    </div>
     </div>
 <br> <hr>
 <script src="js/index.js"></script>
 </main>
+
 <hr>
 
 <!-- <footer>{{ person.name.first }} {{ person.name.last }} |{{ person.location.country }} | {{ person.email }}</footer> -->
