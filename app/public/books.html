@@ -62,42 +62,47 @@
             <td>{{ book.Publisher }}</td>
             <td>{{ book.PageCount }}</td>
             <td>$ {{ book.MSRP }}</td>
+            <td><button type="button" v-on:click="handleEditOffer(offer)" class="btn btn-outline-secondary btn-sm">Edit</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button></td>
           </tr>
         </tbody>
       </table>
-    </div>
 
       <br><br>
 
       <h3>Add a new book</h3>
-      <form action="action_page.php" method="post class">
+      <h3>{{ selectedOffer === null ? "Add " : "Edit " }} Offer</h3>
+            <form v-on:submit.prevent="postOffer">
         <div class="form-group">
 
-          <label for="t">Book Title</label>
-          <input type="text" class="form-control" id="t" name="Book Title"><br>
+          <label for="t" class="form-label">Book Title</label>
+          <input type="text" v-model="offerForm.BookTitle" class="form-control" id="t" name="Book Title"><br>
         </div>
         <div class="form-group">
-          <label for="A">Author</label>
-          <input type="text" class="form-control" id="A" name="A">
+          <label for="A" class="form-label">Author</label>
+          <input type="text" v-model="offerForm.Author" class="form-control" id="A" name="A">
         </div>
         <div class="form-group">
-          <label for="P">Publication Year</label>
-          <input type="text" class="form-control" id="P" name="A"><br>
+          <label for="P" class="form-label">Publication Year</label>
+          <input type="number" v-model="offerForm.PublicationYear" class="form-control" id="P" name="A"><br>
         </div>
         <div class="form-group">
-          <label for="S">Publisher</label>
-          <input type="text" class="form-control" id="S" name="S"><br>
+          <label for="S" class="form-label">Publisher</label>
+          <input type="text" v-model="offerForm.Publisher" class="form-control" id="S" name="S"><br>
         </div>
         <div class="form-group">
-          <label for="C">Page Count</label>
-          <input type="text" class="form-control" id="C" name="C"><br>
+          <label for="C" class="form-label">Page Count</label>
+          <input type="number" v-model="offerForm.PageCount" class="form-control" id="C" name="C"><br>
         </div>
         <div class="form-group">
-          <label for="M">MSRP</label>
-          <input type="text" class="form-control" id="M" name="M"><br>
-          <button type="button" class="btn btn-dark">Submit</button>
+          <label for="M" class="form-label">MSRP</label>
+          <input type="number" v-model="offerForm.MSRP" class="form-control" id="M" name="M"><br>
         </div>
-
+        <!-- <input class="btn btn-dark" type="submit" value="Add"> -->
+        <button type="submit" class="btn btn-dark">{{ selectedOffer === null ? "Add " : "Edit " }} Offer</button>
+        <button type="button" class="btn btn-outline-secondary" 
+           v-if="selectedOffer"
+           v-on:click="handleResetEdit">Cancel Edit</button>
       </form>
     </main>
     <hr>
