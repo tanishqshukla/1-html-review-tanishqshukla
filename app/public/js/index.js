@@ -53,11 +53,12 @@ const Offer = {
             method:'POST',
             body: JSON.stringify(this.offerForm),
             headers: {
-              "Content-Type": "application/json; charset=utf-8"
+              "Content-Type": "application/json; charset=utf-8",
             }
           })
-          .then( response => response.json())
-          .then( json => {console.log("Returned from post:", json);
+          .then( response => response.json() )
+          .then( json => {
+            console.log("Returned from post:", json);
             // TODO: test a result was returned!
             this.books = json;
 
