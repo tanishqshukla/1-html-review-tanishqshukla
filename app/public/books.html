@@ -62,15 +62,21 @@
             <td>{{ book.Publisher }}</td>
             <td>{{ book.PageCount }}</td>
             <td>$ {{ book.MSRP }}</td>
-            <td></td>
+            <td>
+              <button type="button" class="btn btn-outline-secondary btn-sm"
+                            v-on:click="selectOfferToEdit(book)">Edit</button>
+              <button type="button" class="btn btn-outline-secondary btn-sm"
+                            v-on:click="postDeleteOffer(book)">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
 
       <br><br>
 
-      <h3>Add a new book</h3>
-      <form v-on:submit.prevent="postNewOffer">
+      <!-- <h3>Add a new book</h3> -->
+      <h3 class="text-center">{{ selectedOffer === null ? "Add a new" : "Edit " }} Book</h3>
+      <form v-on:submit.prevent="postOffer">
         <div class="form-group">
 
           <label for="t" class="form-label">Book Title</label>
@@ -82,7 +88,7 @@
         </div>
         <div class="form-group">
           <label for="P" class="form-label">Publication Year</label>
-          <input type="number" v-model="offerForm.PublicationYear" class="form-control" id="P" name="A"><br>
+          <input type="text" v-model="offerForm.PublicationYear" class="form-control" id="P" name="A"><br>
         </div>
         <div class="form-group">
           <label for="S" class="form-label">Publisher</label>
@@ -94,9 +100,11 @@
         </div>
         <div class="form-group">
           <label for="M" class="form-label">MSRP</label>
-          <input type="number" v-model="offerForm.MSRP" class="form-control" id="M" name="M"><br>
+          <input type="float" v-model="offerForm.MSRP" class="form-control" id="M" name="M"><br>
         </div>
-        <input class="btn btn-dark" type="submit" value="Add">
+        <!-- <input class="btn btn-dark" type="submit" value="Add"> -->
+        <button type="submit" class="btn btn-primary">{{ selectedOffer === null ? "Add " : "Edit " }} Book </button>
+        <button type="button" class="btn btn-dark" v-if="selectedOffer" v-on:click="resetOfferForm">Cancel</button>
       </form>
     </main>
     <hr>
